@@ -6,31 +6,12 @@ import ContactList from './ContactList/ContactListContainer';
 import Filter from './Filter/FilterContainer';
 import ContactForm from './ContactForm/ContactFormContainer';
 import * as phonebookSelectors from '../redux/phonebook/phonebookSelectors';
-// import * as localStorage from '../services/localStorage';
 import styles from './App.module.css';
 import popTransition from '../transitions/pop.module.css';
 import slideTransition from '../transitions/slide.module.css';
 import appearTransition from '../transitions/appear.module.css';
 
 const App = ({ contacts }) => {
-  // componentDidMount() {
-  //   const contacts = localStorage.getContacts();
-
-  //   if (contacts) {
-  //     this.setState({ contacts });
-  //   }
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   const { contacts } = this.state;
-
-  //   if (prevState.contacts !== contacts) {
-  //     localStorage.saveContacts(contacts);
-  //   }
-  // }
-
-  // const contacts = this.props;
-
   return (
     <div className={styles.wrapper}>
       <CSSTransition in timeout={500} classNames={appearTransition} appear>

@@ -8,7 +8,9 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  addContact: contact => dispatch(phonebookActions.addContact(contact)),
+  addContact: contact => dispatch(phonebookActions.addContact({ contact })),
+  // Without Redux Toolkit
+  // addContact: contact => dispatch(phonebookActions.addContact(contact)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

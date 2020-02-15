@@ -4,6 +4,14 @@ export const getContacts = store => store.phonebook.contacts;
 
 export const getFilterValue = store => store.phonebook.filter;
 
+export const getFilteredContacts = createSelector(
+  [getContacts, getFilterValue],
+  (contacts, filterValue) =>
+    contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filterValue.toLowerCase()),
+    ),
+);
+
 // Without createSelector
 
 // export const getFilteredContacts = store => {
@@ -13,11 +21,3 @@ export const getFilterValue = store => store.phonebook.filter;
 //     contact.name.toLowerCase().includes(filterValue.toLowerCase()),
 //   );
 // };
-
-export const getFilteredContacts = createSelector(
-  [getContacts, getFilterValue],
-  (contacts, filterValue) =>
-    contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filterValue.toLowerCase()),
-    ),
-);

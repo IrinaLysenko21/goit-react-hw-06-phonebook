@@ -8,7 +8,9 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  deleteContact: id => dispatch(phonebookActions.deleteContact(id)),
+  deleteContact: id => dispatch(phonebookActions.deleteContact({ id })),
+  // Without Redux Toolkit
+  // deleteContact: id => dispatch(phonebookActions.deleteContact(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

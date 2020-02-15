@@ -8,7 +8,9 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeFilter: value => dispatch(phonebookActions.changeFilter(value)),
+  changeFilter: value => dispatch(phonebookActions.changeFilter({ value })),
+  // Without Redux Toolkit
+  // changeFilter: value => dispatch(phonebookActions.changeFilter(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);
