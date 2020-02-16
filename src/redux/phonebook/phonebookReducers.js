@@ -1,15 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 import * as types from './phonebookTypes';
-import * as localStorage from '../../services/localStorage';
 
-const getInitialState = () => {
-  const contactsFromLocalStorage = localStorage.getContacts();
-
-  return contactsFromLocalStorage === undefined ? [] : contactsFromLocalStorage;
-};
-
-const contactsReducer = createReducer(getInitialState(), {
+const contactsReducer = createReducer([], {
   [types.ADD_CONTACT]: (state, action) => [...state, action.payload.contact],
 
   [types.DELETE_CONTACT]: (state, action) =>
@@ -29,18 +22,8 @@ export default combineReducers({
 
 // import { combineReducers } from 'redux';
 // import types from './phonebookTypes';
-// import * as localStorage from '../../services/localStorage';
 
-// const getInitialState = () => {
-//   const contactsFromLocalStorage = localStorage.getContacts();
-
-//   const initialState =
-//     contactsFromLocalStorage === undefined ? [] : contactsFromLocalStorage;
-
-//   return initialState;
-// };
-
-// const contactsReducer = (state = getInitialState(), { type, payload }) => {
+// const contactsReducer = ([], { type, payload }) => {
 //   switch (type) {
 //     case types.ADD_CONTACT:
 //       return [...state, payload.contact];

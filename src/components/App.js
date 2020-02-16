@@ -11,7 +11,7 @@ import popTransition from '../transitions/pop.module.css';
 import slideTransition from '../transitions/slide.module.css';
 import appearTransition from '../transitions/appear.module.css';
 
-const App = ({ contacts }) => {
+const App = ({ contactsLength }) => {
   return (
     <div className={styles.wrapper}>
       <CSSTransition in timeout={500} classNames={appearTransition} appear>
@@ -23,7 +23,7 @@ const App = ({ contacts }) => {
       <h2 className={styles.heading}>Contacts</h2>
 
       <CSSTransition
-        in={contacts.length > 1}
+        in={contactsLength > 1}
         timeout={250}
         classNames={popTransition}
         unmountOnExit
@@ -31,7 +31,7 @@ const App = ({ contacts }) => {
         <Filter />
       </CSSTransition>
       <CSSTransition
-        in={contacts.length > 0}
+        in={contactsLength > 0}
         timeout={250}
         classNames={slideTransition}
         unmountOnExit
@@ -43,17 +43,11 @@ const App = ({ contacts }) => {
 };
 
 App.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string,
-      name: PropTypes.string,
-      number: PropTypes.string,
-    }).isRequired,
-  ).isRequired,
+  contactsLength: PropTypes.number.isRequired,
 };
 
 const mapStateToProps = store => ({
-  contacts: phonebookSelectors.getContacts(store),
+  contactsLength: phonebookSelectors.getContactsLength(store),
 });
 
 export default connect(mapStateToProps)(App);

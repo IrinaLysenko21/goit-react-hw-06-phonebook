@@ -30,6 +30,30 @@ class ContactForm extends Component {
     numberId: shortid.generate(),
   };
 
+  componentDidMount() {
+    try {
+      const { addContact } = this.props;
+      const persistedContacts = localStorage.getItem('contacts');
+      if (persistedContacts) {
+        const contacts = JSON.parse(persistedContacts);
+        contacts.map(el => addContact(el));
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    try {
+      const { contacts } = this.props;
+      if (prevState.contacts !== contacts) {
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+      }
+    } catch (err) {
+      throw new Error(err);
+    }
+  }
+
   handleChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });

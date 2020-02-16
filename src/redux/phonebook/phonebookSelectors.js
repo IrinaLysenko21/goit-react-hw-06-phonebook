@@ -2,6 +2,8 @@ import { createSelector } from 'reselect';
 
 export const getContacts = store => store.phonebook.contacts;
 
+export const getContactsLength = store => store.phonebook.contacts.length;
+
 export const getFilterValue = store => store.phonebook.filter;
 
 export const getFilteredContacts = createSelector(
